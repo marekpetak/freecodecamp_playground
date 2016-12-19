@@ -1,4 +1,4 @@
-var ROMAN = {
+const ROMAN = {
     1000: 'M',
     500: 'D',
     100: 'C',
@@ -11,15 +11,12 @@ var ROMAN = {
 function convertToRoman(num) {
     if (num < 0) return NaN;
 
-    for (var key in ROMAN) {
-        if (ROMAN.hasOwnProperty(key)) {
-            if (num % key === 0) {
-                console.log(ROMAN[key]);
-            }
-        }
-    }
+    let tousands = num - (num % 1000);
+    let hundreds = (num - tousands) - (num % 100);
+    let tens = (num - (tousands + hundreds)) - (num % 10);
+    let ones = (num - (tousands + hundreds + tens)) - (num % 1);
 
     return num;
 }
 
-console.log(convertToRoman(36));
+console.log(convertToRoman(3684));
